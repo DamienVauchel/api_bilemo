@@ -35,6 +35,9 @@ framework:
 twig:
     debug: '%kernel.debug%'
     strict_variables: '%kernel.debug%'
+    globals:
+        client_id: '%client_id%'
+        redirect_uri: '%redirect_uri%'
 
 # Doctrine Configuration
 doctrine:
@@ -78,3 +81,10 @@ fos_rest:
         rules:
             - { path: '^/api', priorities: ['json', 'html'], fallback_format: 'json', prefer_extension: true }
             - { path: '^/', priorities: ['html', '*/*'], fallback_format: ~, prefer_extension: true }
+
+csa_guzzle:
+    clients:
+        facebook_api:
+            config:
+                base_url: https://graph.facebook.com
+
