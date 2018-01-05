@@ -65,3 +65,16 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+fos_rest:
+    view:
+        formats: { json: true, xml: false, rss: false }
+        view_response_listener: true
+    serializer:
+        serialize_null: true
+    body_converter:
+        enabled: true
+    format_listener:
+        rules:
+            - { path: '^/api', priorities: ['json', 'html'], fallback_format: 'json', prefer_extension: true }
+            - { path: '^/', priorities: ['html', '*/*'], fallback_format: ~, prefer_extension: true }
