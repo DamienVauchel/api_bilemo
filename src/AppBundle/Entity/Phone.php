@@ -3,12 +3,30 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
 
 /**
  * Phone
  *
  * @ORM\Table(name="phones")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PhoneRepository")
+ *
+ * @Hateoas\Relation(
+ *     "self",
+ *     href= @Hateoas\Route(
+ *          "app_phone_show",
+ *          parameters={ "id" = "expr(object.getId())" },
+ *          absolute=true
+ *     )
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "list",
+ *     href= @Hateoas\Route(
+ *          "app_phones_list",
+ *          absolute=true
+ *     )
+ * )
  */
 class Phone
 {
