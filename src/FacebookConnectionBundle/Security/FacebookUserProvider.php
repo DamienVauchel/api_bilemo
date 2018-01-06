@@ -42,7 +42,8 @@ class FacebookUserProvider implements UserProviderInterface
             $userData['email'],
             $userData['gender'],
             $userData['first_name'],
-            $userData['last_name']
+            $userData['last_name'],
+            $accessToken
         );
 
         $this->userManager->save($user);

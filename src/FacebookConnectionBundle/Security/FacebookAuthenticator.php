@@ -31,13 +31,22 @@ class FacebookAuthenticator implements SimplePreAuthenticatorInterface
 
     public function createToken(Request $request, $providerKey)
     {
-        $code = $request->query->get('code');
-        $url = "https://graph.facebook.com/v2.11/oauth/access_token?client_id=".$this->client_id."&redirect_uri=".$this->redirect_uri."&client_secret=".$this->client_secret."&code=".$code;
-        $response = $this->client->get($url);
-        $res = $response->getBody()->getContents();
-        $userData = $this->serializer->deserialize($res, 'array', 'json');
+        if ($code = $request->query->get('code'))
+        {
+            $code = $request->query->get('code');
+            $url = "https://graph.facebook.com/v2.11/oauth/access_token?client_id=".$this->client_id."&redirect_uri=".$this->redirect_uri."&client_secret=".$this->client_secret."&code=".$code;
+            $response = $this->client->get($url);
+            $res = $response->getBody()->getContents();
+            $userData = $this->serializer->deserialize($res, 'array', 'json');
 
-        $accessToken = $userData['access_token'];
+            $accessToken = $userData['access_token'];
+        }
+        else
+        {
+            $bearer = $request->headers->get('Authorization');
+
+            $accessToken = substr($bearer, 7);
+        }
 
         return new PreAuthenticatedToken(
             'anon.',
@@ -48,6 +57,7 @@ class FacebookAuthenticator implements SimplePreAuthenticatorInterface
 
     public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
     {
+
         $accessToken = $token->getCredentials();
         $user = $userProvider->loadUserByUsername($accessToken);
 

@@ -11,12 +11,13 @@ security:
             security: false
 
         secured_area:
-            pattern: ^/connection
-            stateless: true
+            pattern: ^/
+#            stateless: true
             simple_preauth:
                 authenticator: facebook_authenticator
             provider: provider.facebook_user
 
         main:
             pattern: ^/
+            logout:    true
             anonymous: true

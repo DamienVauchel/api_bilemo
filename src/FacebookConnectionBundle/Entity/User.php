@@ -18,35 +18,6 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *
  * @ExclusionPolicy("all")
  *
- * @Hateoas\Relation(
- *     "self",
- *     href= @Hateoas\Route(
- *          "app_user_show",
- *          parameters={ "id" = "expr(object.getId())" },
- *          absolute=true)
- * )
- *
- * @Hateoas\Relation(
- *     "create",
- *     href= @Hateoas\Route(
- *          "app_user_creation",
- *          absolute=true)
- * )
- *
- * @Hateoas\Relation(
- *     "list",
- *     href= @Hateoas\Route(
- *          "app_users_list",
- *          absolute=true)
- * )
- *
- * @Hateoas\Relation(
- *     "delete",
- *     href= @Hateoas\Route(
- *          "app_user_delete",
- *          parameters={ "id" = "expr(object.getId())" },
- *          absolute=true)
- * )
  */
 class User implements UserInterface
 {
@@ -137,7 +108,9 @@ class User implements UserInterface
      */
     private $facebookId;
 
-    public function __construct($facebookId, $username, $email, $gender, $first_name, $last_name)
+    private $accessToken;
+
+    public function __construct($facebookId, $username, $email, $gender, $first_name, $last_name, $accessToken)
     {
         $this->facebookId = $facebookId;
         $this->username = $username;
@@ -146,11 +119,17 @@ class User implements UserInterface
         $this->first_name = $first_name;
         $this->last_name = $last_name;
         $this->roles = json_encode(['ROLE_USER']);
+        $this->accessToken = $accessToken;
     }
 
     public function getUsername()
     {
         return $this->username;
+    }
+
+    public function getAccessToken()
+    {
+        return $this->accessToken;
     }
 
     public function getEmail()

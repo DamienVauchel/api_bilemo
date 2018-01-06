@@ -1,8 +1,11 @@
 facebook_connection:
     resource: "@FacebookConnectionBundle/Controller/"
     type:     annotation
-    prefix:   /
+    prefix:   /login
 
 app:
     resource: '@AppBundle/Controller/'
     type: annotation
+
+logout:
+    path: /logout
