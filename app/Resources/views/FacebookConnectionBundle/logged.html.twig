@@ -1,0 +1,20 @@
+{% extends 'layout.html.twig' %}
+
+{% block body %}
+    <div class="index container">
+        <h1>Bienvenue sur le site de connexion à BileMo</h1>
+        <br>
+        {% if app.user %}
+            <div class="text-center">
+                <b>Voici votre token:</b>
+                <div style="word-wrap: break-word;">{{ app.user.accessToken }}</div>
+                <br>
+                <a href="{{ path('logout') }}" class="btn btn-danger"><i class="fa fa-sign-out"></i> Logout</a>
+            </div>
+        {% else %}
+            <div class="text-center">
+                <a class="btn btn-sm btn-primary" href='https://www.facebook.com/v2.11/dialog/oauth?client_id={{ client_id }}&redirect_uri={{ redirect_uri }}'><i class="fa fa-facebook" aria-hidden="true"></i> Connexion via Facebook</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

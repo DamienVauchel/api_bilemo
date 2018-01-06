@@ -27,6 +27,11 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *          absolute=true
  *     )
  * )
+ *
+ * @Hateoas\Relation(
+ *     "authenticated_user",
+ *     embedded = @Hateoas\Embedded("expr(service('security.token_storage').getToken().getUser())")
+ * )
  */
 class Phone
 {
