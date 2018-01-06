@@ -11,13 +11,14 @@ security:
             security: false
 
         secured_area:
-            pattern: ^/
-#            stateless: true
+            pattern: ^/login
+            stateless: false
             simple_preauth:
                 authenticator: facebook_authenticator
             provider: provider.facebook_user
+            logout:
+                path:   /login/logout
+                target: /
 
         main:
-            pattern: ^/
-            logout:    true
-            anonymous: true
+            anonymous: ~

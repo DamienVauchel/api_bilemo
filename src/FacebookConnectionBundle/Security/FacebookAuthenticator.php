@@ -57,7 +57,6 @@ class FacebookAuthenticator implements SimplePreAuthenticatorInterface
 
     public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
     {
-
         $accessToken = $token->getCredentials();
         $user = $userProvider->loadUserByUsername($accessToken);
 

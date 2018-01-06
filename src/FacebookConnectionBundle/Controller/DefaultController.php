@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 class DefaultController extends Controller
 {
     /**
-     * @Route(
+     * @Get(
      *     path="/",
      *     name="home"
      * )
@@ -22,7 +22,7 @@ class DefaultController extends Controller
 
     /**
      * @Get(
-     *     path="/connection",
+     *     path="/login/connection",
      *     name="app_back_connection"
      * )
      *
@@ -33,7 +33,25 @@ class DefaultController extends Controller
     {
         if ($request->query->get('code'))
         {
-            return $this->redirectToRoute('home');
+            return $this->redirectToRoute('logged');
         }
+    }
+
+    /**
+     * @Route("/login", name="logged")
+     */
+    public function loggedAction()
+    {
+        return $this->render('FacebookConnectionBundle/logged.html.twig');
+    }
+
+    /**
+     * @Route(
+     *     path="/login/logout",
+     *     name="logout"
+     * )
+     */
+    public function logoutAction()
+    {
     }
 }

@@ -18,6 +18,35 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *
  * @ExclusionPolicy("all")
  *
+ * @Hateoas\Relation(
+ *     "self",
+ *     href= @Hateoas\Route(
+ *          "app_user_show",
+ *          parameters={ "id" = "expr(object.getId())" },
+ *          absolute=true)
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "create",
+ *     href= @Hateoas\Route(
+ *          "app_user_creation",
+ *          absolute=true)
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "list",
+ *     href= @Hateoas\Route(
+ *          "app_users_list",
+ *          absolute=true)
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "delete",
+ *     href= @Hateoas\Route(
+ *          "app_user_delete",
+ *          parameters={ "id" = "expr(object.getId())" },
+ *          absolute=true)
+ * )
  */
 class User implements UserInterface
 {

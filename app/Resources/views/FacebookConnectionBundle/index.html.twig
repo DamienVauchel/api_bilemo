@@ -3,10 +3,6 @@
 {% block body %}
     <div class="index container">
         <h1>Bienvenue sur le site de connexion à BileMo</h1>
-        {% if app.user %}
-            <div>Token: {{ app.user.accessToken }}</div>
-        {% else %}
-            <a class="btn btn-sm btn-primary" href='https://www.facebook.com/v2.11/dialog/oauth?client_id={{ client_id }}&redirect_uri={{ redirect_uri }}'><i class="fa fa-facebook" aria-hidden="true"></i> Connexion via Facebook</a>
-        {% endif %}
+        <a class="btn btn-sm btn-primary" href='https://www.facebook.com/v2.11/dialog/oauth?client_id={{ client_id }}&redirect_uri={{ redirect_uri }}'><i class="fa fa-facebook" aria-hidden="true"></i> Connexion via Facebook</a>
     </div>
 {% endblock %}
