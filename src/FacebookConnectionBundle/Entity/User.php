@@ -84,16 +84,6 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="pw", type="string", nullable=true)
-     * @Assert\NotBlank(groups={"Create"})
-     *
-     * @Expose()
-     */
-    private $pw;
-
-    /**
-     * @var string
-     *
      * @ORM\Column(name="gender", type="string", nullable=true)
      *
      * @Expose()
@@ -319,30 +309,6 @@ class User implements UserInterface
         $this->roles = $roles;
 
         return $this;
-    }
-
-    /**
-     * Set pw
-     *
-     * @param string $pw
-     *
-     * @return User
-     */
-    public function setPw($pw)
-    {
-        $this->pw = $pw;
-
-        return $this;
-    }
-
-    /**
-     * Get pw
-     *
-     * @return string
-     */
-    public function getPw()
-    {
-        return $this->pw;
     }
 
     /**

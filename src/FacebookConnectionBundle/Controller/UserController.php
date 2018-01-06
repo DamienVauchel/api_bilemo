@@ -3,13 +3,14 @@
 namespace FacebookConnectionBundle\Controller;
 
 use FacebookConnectionBundle\Entity\User;
-use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\Delete;
 use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
+use Symfony\Component\HttpFoundation\Response;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 
 class UserController extends FOSRestController
 {
@@ -19,10 +20,18 @@ class UserController extends FOSRestController
      *     path="/api/users",
      *     name="app_user_creation"
      * )
+     * @ParamConverter("user", converter="fos_rest.request_body")
+     *
+     * @param User $user
+     * @return mixed
      */
-    public function createAction()
+    public function createAction(User $user)
     {
+        $em = $this->getDoctrine()->getManager();
+        $em->persist($user);
+        $em->flush();
 
+        return $this->redirectToRoute('app_users_list');
     }
 
     // READ

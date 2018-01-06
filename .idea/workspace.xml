@@ -2,14 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="14a28eef-7d6a-4740-9298-f597bec32d03" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/FacebookConnectionBundle/index.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/FacebookConnectionBundle/index.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/FacebookConnectionBundle/logged.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/FacebookConnectionBundle/logged.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" afterPath="$PROJECT_DIR$/app/Resources/views/layout.html.twig" />
-      <change beforePath="$PROJECT_DIR$/app/config/security.yml" afterPath="$PROJECT_DIR$/app/config/security.yml" />
-      <change beforePath="$PROJECT_DIR$/src/AppBundle/Controller/PhoneController.php" afterPath="$PROJECT_DIR$/src/AppBundle/Controller/PhoneController.php" />
+      <change beforePath="$PROJECT_DIR$/src/FacebookConnectionBundle/Controller/UserController.php" afterPath="$PROJECT_DIR$/src/FacebookConnectionBundle/Controller/UserController.php" />
       <change beforePath="$PROJECT_DIR$/src/FacebookConnectionBundle/Entity/User.php" afterPath="$PROJECT_DIR$/src/FacebookConnectionBundle/Entity/User.php" />
-      <change beforePath="$PROJECT_DIR$/src/FacebookConnectionBundle/Security/FacebookAuthenticator.php" afterPath="$PROJECT_DIR$/src/FacebookConnectionBundle/Security/FacebookAuthenticator.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,22 +60,10 @@
       <file leaf-file-name="PhoneController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PhoneController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="560">
-              <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
+            <state relative-caret-position="740">
+              <caret line="76" column="7" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="76" selection-end-column="7" />
               <folding>
                 <element signature="e#40#67#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="DefaultController.php" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/FacebookConnectionBundle/Controller/DefaultController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="515">
-              <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
-              <folding>
-                <element signature="e#55#112#0#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -90,8 +72,8 @@
       <file leaf-file-name="User.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/FacebookConnectionBundle/Entity/User.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="580">
-              <caret line="46" column="69" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="46" selection-end-column="69" />
+            <state relative-caret-position="6120">
+              <caret line="312" column="0" lean-forward="false" selection-start-line="312" selection-start-column="0" selection-end-line="312" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -100,11 +82,11 @@
       <file leaf-file-name="UserController.php" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/FacebookConnectionBundle/Controller/UserController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="73" column="38" lean-forward="false" selection-start-line="73" selection-start-column="38" selection-end-line="73" selection-end-column="38" />
+            <state relative-caret-position="460">
+              <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
               <folding>
                 <element signature="e#55#96#0#PHP" expanded="true" />
-                <element signature="e#938#969#1#PHP" expanded="true" />
+                <element signature="e#1290#1321#1#PHP" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -270,62 +252,7 @@
             <path>
               <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
               <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="app" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Resources" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FacebookConnectionBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
               <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="AppBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FacebookConnectionBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FacebookConnectionBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Controller" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FacebookConnectionBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Entity" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FacebookConnectionBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Manager" type="2a2b976b:PhpTreeStructureProvider$1" />
-            </path>
-            <path>
-              <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
-              <item name="api_bilemo" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="src" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="FacebookConnectionBundle" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="Security" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="api_bilemo" type="b2602c69:ProjectViewProjectNode" />
@@ -393,12 +320,12 @@
       <workItem from="1515176245948" duration="1030000" />
       <workItem from="1515226091825" duration="376000" />
       <workItem from="1515227186437" duration="7516000" />
-      <workItem from="1515244646262" duration="10856000" />
+      <workItem from="1515244646262" duration="12817000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31789000" />
+    <option name="totallyTimeSpent" value="33750000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -752,16 +679,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PhoneController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="560">
-          <caret line="34" column="33" lean-forward="false" selection-start-line="34" selection-start-column="33" selection-end-line="34" selection-end-column="33" />
-          <folding>
-            <element signature="e#40#67#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/AppBundle/Entity/Phone.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="560">
@@ -772,29 +689,39 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FacebookConnectionBundle/Controller/DefaultController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="515">
+        <state relative-caret-position="575">
           <caret line="44" column="55" lean-forward="false" selection-start-line="44" selection-start-column="55" selection-end-line="44" selection-end-column="55" />
           <folding>
-            <element signature="e#55#112#0#PHP" expanded="true" />
+            <element signature="e#55#112#0#PHP" expanded="false" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FacebookConnectionBundle/Entity/User.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="580">
-          <caret line="46" column="69" lean-forward="true" selection-start-line="45" selection-start-column="30" selection-end-line="46" selection-end-column="69" />
+        <state relative-caret-position="6120">
+          <caret line="312" column="0" lean-forward="false" selection-start-line="312" selection-start-column="0" selection-end-line="312" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/AppBundle/Controller/PhoneController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="740">
+          <caret line="76" column="7" lean-forward="false" selection-start-line="64" selection-start-column="9" selection-end-line="76" selection-end-column="7" />
+          <folding>
+            <element signature="e#40#67#0#PHP" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/FacebookConnectionBundle/Controller/UserController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="73" column="38" lean-forward="false" selection-start-line="73" selection-start-column="38" selection-end-line="73" selection-end-column="38" />
+        <state relative-caret-position="460">
+          <caret line="23" column="6" lean-forward="true" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="6" />
           <folding>
             <element signature="e#55#96#0#PHP" expanded="true" />
-            <element signature="e#938#969#1#PHP" expanded="true" />
+            <element signature="e#1290#1321#1#PHP" expanded="true" />
           </folding>
         </state>
       </provider>
