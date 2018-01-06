@@ -45,20 +45,28 @@
 </head>
 
 <body>
-<header class="navbar">
+<header class="navbar" style="background-color: #dddddd !important;">
     <div class="container-fluid">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                 <i class="fa fa-bars" aria-hidden="true"></i>
             </button>
-            <h1>BileMo</h1>
+            <h1 class="navbar-text" style="font-size: 1.5em">BileMo</h1>
         </div>
         <div class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="{{ path('home') }}"><i class="fa fa-home" aria-hidden="true"></i></a></li>
-                <li>
-                    <a class="btn btn-sm btn-primary" href='https://www.facebook.com/v2.11/dialog/oauth?client_id={{ client_id }}&redirect_uri={{ redirect_uri }}'><i class="fa fa-facebook" aria-hidden="true"></i> Connexion via Facebook</a>
-                </li>
+                {% if app.user %}
+                    <li>
+                        <p class="navbar-text">Bonjour {{ app.user.username }}! Comment allez-vous aujourd'hui?</p>
+                    </li>
+                    <li>
+                        <a href="{{ path('logout') }}" class="btn btn-danger"><i class="fa fa-sign-out"></i> Logout</a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a class="btn btn-sm btn-primary" href='https://www.facebook.com/v2.11/dialog/oauth?client_id={{ client_id }}&redirect_uri={{ redirect_uri }}'><i class="fa fa-facebook" aria-hidden="true"></i> Connexion via Facebook</a>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     </div>

@@ -22,7 +22,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *     "self",
  *     href= @Hateoas\Route(
  *          "app_user_show",
- *          parameters={ "id" = "expr(object.getId())" },
+ *          parameters={ "username" = "expr(object.getUsername())" },
  *          absolute=true)
  * )
  *
@@ -44,7 +44,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *     "delete",
  *     href= @Hateoas\Route(
  *          "app_user_delete",
- *          parameters={ "id" = "expr(object.getId())" },
+ *          parameters={ "username" = "expr(object.getUsername())" },
  *          absolute=true)
  * )
  */

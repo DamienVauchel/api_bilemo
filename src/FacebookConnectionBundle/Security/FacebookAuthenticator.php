@@ -2,6 +2,7 @@
 
 namespace FacebookConnectionBundle\Security;
 
+use AppBundle\Exception\BeLoggedException;
 use GuzzleHttp\Client;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -41,11 +42,16 @@ class FacebookAuthenticator implements SimplePreAuthenticatorInterface
 
             $accessToken = $userData['access_token'];
         }
-        else
+        elseif($bearer = $request->headers->get('Authorization'))
         {
             $bearer = $request->headers->get('Authorization');
 
             $accessToken = substr($bearer, 7);
+        }
+        else
+        {
+            $message = "You must be logged to access this page!";
+            throw new BeLoggedException($message);
         }
 
         return new PreAuthenticatedToken(
@@ -57,6 +63,7 @@ class FacebookAuthenticator implements SimplePreAuthenticatorInterface
 
     public function authenticateToken(TokenInterface $token, UserProviderInterface $userProvider, $providerKey)
     {
+
         $accessToken = $token->getCredentials();
         $user = $userProvider->loadUserByUsername($accessToken);
 

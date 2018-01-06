@@ -20,5 +20,13 @@ security:
                 path:   /login/logout
                 target: /
 
+        api:
+            pattern: ^/api
+            anonymous: false
+            stateless: true
+            simple_preauth:
+                authenticator: facebook_authenticator
+            provider: provider.facebook_user
+
         main:
             anonymous: ~

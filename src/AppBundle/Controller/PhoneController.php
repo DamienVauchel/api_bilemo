@@ -4,10 +4,9 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Phone;
 use FOS\RestBundle\Controller\FOSRestController;
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use FOS\RestBundle\Controller\Annotations\Get;
-use FOS\RestBundle\Controller\Annotations\Post;
 use FOS\RestBundle\Controller\Annotations\View;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
 
 class PhoneController extends FOSRestController
@@ -19,6 +18,8 @@ class PhoneController extends FOSRestController
      *     requirements={"id"="\d+"}
      * )
      * @View()
+     *
+     * @Security("has_role('ROLE_USER')")
      *
      * @param Phone $phone
      * @return Phone
@@ -33,6 +34,8 @@ class PhoneController extends FOSRestController
      *     path="/api/phones",
      *     name="app_phones_list"
      * )
+     *
+     * @Security("has_role('ROLE_USER')")
      */
     public function listAction()
     {
