@@ -3,6 +3,7 @@
 namespace FacebookConnectionBundle\Controller;
 
 use FacebookConnectionBundle\Entity\User;
+use FacebookConnectionBundle\Exception\ResourceValidationException;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
@@ -11,6 +12,7 @@ use FOS\RestBundle\Controller\Annotations\View;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Component\Validator\ConstraintViolationList;
 
 class UserController extends FOSRestController
 {
@@ -22,11 +24,29 @@ class UserController extends FOSRestController
      * )
      * @ParamConverter("user", converter="fos_rest.request_body")
      *
+     * @Security("has_role('ROLE_USER')")
+     *
      * @param User $user
+     * @param ConstraintViolationList $violations
      * @return mixed
+     * @throws
      */
-    public function createAction(User $user)
+    public function createAction(User $user, ConstraintViolationList $violations)
     {
+        if (count($violations))
+        {
+            $message = "The JSON sent contains invalid data: ";
+            foreach ($violations as $violation)
+            {
+                $message .= sprintf(
+                    "Field %s: %s",
+                    $violation->getPropertyPath(),
+                    $violation->getMessage()
+                );
+            }
+            throw new ResourceValidationException($message);
+        }
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($user);
         $em->flush();

@@ -29,3 +29,7 @@ services:
 
     GuzzleHttp\Client: '@csa_guzzle.client.facebook_api'
 
+    FacebookConnectionBundle\Controller\:
+        resource: '../../src/FacebookConnectionBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']

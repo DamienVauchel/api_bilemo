@@ -2,7 +2,6 @@
 
 namespace FacebookConnectionBundle\Entity;
 
-use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\ExclusionPolicy;
@@ -65,7 +64,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="username", type="string", nullable=true, unique=true)
-     * @Assert\NotBlank(groups={"Create"})
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
@@ -75,7 +74,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="email", type="string", nullable=true)
-     * @Assert\NotBlank(groups={"Create"})
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
@@ -85,6 +84,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="gender", type="string", nullable=true)
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
@@ -94,6 +94,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="first_name", type="string", nullable=true)
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
@@ -103,6 +104,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="last_name", type="string", nullable=true)
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
@@ -112,7 +114,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="roles", type="string")
-     * @Assert\NotBlank(groups={"Create"})
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
@@ -122,6 +124,7 @@ class User implements UserInterface
      * @var string
      *
      * @ORM\Column(name="facebookId", type="string", nullable=true)
+     * @Assert\NotBlank()
      *
      * @Expose()
      */
