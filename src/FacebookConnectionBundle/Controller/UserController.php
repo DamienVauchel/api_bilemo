@@ -143,7 +143,7 @@ class UserController extends FOSRestController
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Users list.",
+     *     description="Users list. Success",
      *     @Model(type=User::class)
      * )
      * @SWG\Response(
@@ -193,7 +193,7 @@ class UserController extends FOSRestController
      *
      * @SWG\Response(
      *     response=200,
-     *     description="User's detail.",
+     *     description="User's detail. Success",
      *     @Model(type=User::class)
      * )
      * @SWG\Response(
