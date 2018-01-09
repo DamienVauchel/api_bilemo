@@ -17,7 +17,7 @@ class PhoneController extends FOSRestController
      *     name="app_phone_show",
      *     requirements={"id"="\d+"}
      * )
-     * @View()
+     * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
      *
@@ -34,6 +34,7 @@ class PhoneController extends FOSRestController
      *     path="/api/phones",
      *     name="app_phones_list"
      * )
+     * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
      */

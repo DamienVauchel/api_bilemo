@@ -4,6 +4,7 @@ namespace FacebookConnectionBundle\Controller;
 
 use FacebookConnectionBundle\Entity\User;
 use FacebookConnectionBundle\Exception\ResourceValidationException;
+use FacebookConnectionBundle\Exception\UserExistException;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\Post;
@@ -23,6 +24,8 @@ class UserController extends FOSRestController
      *     name="app_user_creation"
      * )
      * @ParamConverter("user", converter="fos_rest.request_body")
+     *
+     * @View(StatusCode=201)
      *
      * @Security("has_role('ROLE_USER')")
      *
@@ -61,6 +64,8 @@ class UserController extends FOSRestController
      *     name="app_users_list"
      * )
      *
+     * @View(StatusCode=200)
+     *
      * @Security("has_role('ROLE_USER')")
      */
     public function listAction()
@@ -86,12 +91,13 @@ class UserController extends FOSRestController
      *     path="/api/users/{username}",
      *     name="app_user_show"
      * )
-     * @View()
+     * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
      *
      * @param User $user
      * @return User
+     * @throws
      */
     public function showAction(User $user)
     {
@@ -103,7 +109,7 @@ class UserController extends FOSRestController
      *     path="/api/delete/{username}",
      *     name="app_user_delete"
      * )
-     * @View()
+     * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
      *

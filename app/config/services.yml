@@ -13,6 +13,11 @@ services:
         public: true
         tags: ['controller.service_arguments']
 
+    FacebookConnectionBundle\Controller\:
+        resource: '../../src/FacebookConnectionBundle/Controller'
+        public: true
+        tags: ['controller.service_arguments']
+
     user_manager:
         class: FacebookConnectionBundle\Manager\UserManager
 
@@ -28,8 +33,3 @@ services:
         arguments: ["@csa_guzzle.client.facebook_api", "@jms_serializer", "@user_manager"]
 
     GuzzleHttp\Client: '@csa_guzzle.client.facebook_api'
-
-    FacebookConnectionBundle\Controller\:
-        resource: '../../src/FacebookConnectionBundle/Controller'
-        public: true
-        tags: ['controller.service_arguments']
