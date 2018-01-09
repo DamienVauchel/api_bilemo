@@ -88,3 +88,13 @@ csa_guzzle:
         facebook_api:
             config:
                 base_url: https://graph.facebook.com
+
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Bilmo API
+            description: List and detail for the Bilemo users and phones
+            version: 1.0.0
+    routes:
+        path_patterns:
+            - ^/api(?!/doc$)
