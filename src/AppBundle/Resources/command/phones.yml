@@ -1,0 +1,79 @@
+phone_01:
+    model: "Galaxy J3"
+    brand: "Samsung"
+    description: "Smartphone J3 Noir débloqué/Design compact/Ecran 5'' Super Amoled HD/Reseau 4G(catégorie 4),Wifi/Android Lollipop 5.1/Processeur Quad Core 1,5Ghz/Appareil Photo 8MP "
+    price: "124.00"
+    color: "black"
+    stock: "52"
+
+phone_02:
+    model: "Mate 10 Lite"
+    brand: "Huawei"
+    description: "Le Mate 10 Lite dispose d'un écran éblouissant de 5, 9 pouces offrant une incroyable immersive, pour un design moderne et élégant. Le superbe écran FHD+ révolutionne votre manière d'interagir sur les réseaux sociaux, regarder des vidéos, lire des livres et naviguer sur le web. "
+    price: "299.00"
+    color: "black"
+    stock: "14"
+
+phone_03:
+    model: "Xperia M2"
+    brand: "Sony"
+    description: "Sony Xperia M2 violet débloqué"
+    price: "89.99"
+    color: "purple"
+    stock: "31"
+
+phone_04:
+    model: "Leap"
+    brand: "Blackberry"
+    description: "    Bluetooth : 4.0 Capacité de stockage : 16 Go WiFi : oui"
+    price: "94.00"
+    color: "black"
+    stock: "23"
+
+phone_05:
+    model: "Zenforce 4"
+    brand: "Asus"
+    description: "ASUS Zenfone 4 Max : WE LOVE GOING FURTHER UNE AUTONOMIE RECORD : Doté d’une batterie de 4100 mAh, le ZenFone 4 Max est équipé pour les journées les plus longues. Jeu, lecture vidéo, surf sur internet, il ne vous laissera jamais tomber. Grâce à sa fonctionnalité de recharge inversé, il peut également servir de batterie externe, en rechargeant vos autres appareils qui auraient le souﬄe court. DES PHOTOS PLUS NETTES : Grâce à ses capteurs de 8 MP à l'avant et 13 MP + 5 MP à l'arrière et de son stabilisateur à 3 axes, ne ratez plus aucune photo et proﬁtez de clichés toujours plus nets. Prendre de superbes photos devient un jeu d'enfant. GARDEZ L’ESPRIT ZEN : Avec le ZenFone 4 Max, vous pourrez rester Zen et stocker sans compter grâce à sa capacité interne de 32 Go. Si cela ne suﬃsait pas, vous pourrez insérer une carte micro SD jusqu’à 256 Go en complément des deux emplacements nano et micro SIM. "
+    price: "199.00"
+    color: "silver"
+    stock: "12"
+
+phone_06:
+    model: "P8 Lite"
+    brand: "Huawei"
+    description: "Huawei - P8 Lite - Smartphone Débloqué - 4G (Ecran : 5 pouces - 16 Go - Double SIM - Android 5.0 Lollipop) - Noir "
+    price: "160.00"
+    color: "black"
+    stock: "16"
+
+phone_07:
+    model: "Honor 6X"
+    brand: "Huawei"
+    description: "Processeur octa-core Kirin 655 (16nm), 3 Go de RAM et système intelligent de gestion des données Système fluide pour jouer, surfer, écouter de la musique ou utiliser plusieurs applications simultanément 32 Go de mémoire + 128 Go d'espace SD pour stocker de la musique, des vidéos ou encore des images "
+    price: "179.00"
+    color: "black"
+    stock: "24"
+
+phone_08:
+    model: "iPhone 7"
+    brand: "Apple"
+    description: "L’iPhone 7 est doté d’un tout nouvel appareil photo 12 Mpx offrant une ouverture à ƒ/1,8 pour de superbes photos et vidéos en 4K, même en conditions de faible éclairage. De la stabilisation optique de l’image. D’un écran Retina HD 4,7 pouces à large gamme de couleurs avec 3D Touch. D’une puce A10 Fusion pour des performances jusqu’à deux fois plus rapides que sur l’iPhone 6. De Touch ID. D’une connectivité 4G LTE plus rapide. De la meilleure autonomie jamais vue sur un iPhone. D’un son stéréo immersif. D’iOS 10. Et il est résistant aux éclaboussures et à l’eau"
+    price: "579.99"
+    color: "black"
+    stock: "2"
+
+phone_09:
+    model: "iPhone 8"
+    brand: "Apple"
+    description: "Un nouveau design tout de verre vêtu. L’appareil photo le plus populaire au monde, encore amélioré. La plus puissante et la plus intelligente des puces de smartphone. Le chargement sans fil et sans effort. Et des expériences de réalité augmentée inimaginables auparavant. Voici l’iPhone 8. Une nouvelle génération d’iPhone. "
+    price: "715.99"
+    color: "black"
+    stock: "6"
+
+phone_10:
+    model: "iPhone X"
+    brand: "Apple"
+    description: "Nous avons toujours rêvé de créer un iPhone qui ne soit qu’écran. Un iPhone si immersif qu’il s’efface au profit de la seule expérience. Un iPhone si intelligent qu’il réponde à un geste, à la voix… et même à un regard. C’est chose faite aujourd’hui. Dites bonjour au futur. "
+    price: "1067.00"
+    color: "gold"
+    stock: "3"

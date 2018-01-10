@@ -193,14 +193,14 @@ class CustomerController extends FOSRestController
      * )
      * @SWG\Response(
      *     response=403,
-     *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
+     *     description="You don't have the permission to access this URL. Login, signup or change account, you need a valid access token."
      * )
      * @SWG\Tag(name="Customers")
      */
     public function showAction(Customer $customer)
     {
         $user = $this->findUser();
-        if ($user = $customer->getUser())
+        if ($user === $customer->getUser())
         {
             return $customer;
         }
@@ -240,14 +240,14 @@ class CustomerController extends FOSRestController
      * )
      * @SWG\Response(
      *     response=403,
-     *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
+     *     description="You don't have the permission to access this URL. Login, signup or change account, you need a valid access token."
      * )
      * @SWG\Tag(name="Customers")
      */
     public function deleteAction(Customer $customer)
     {
         $user = $this->findUser();
-        if ($user = $customer->getUser())
+        if ($user === $customer->getUser())
         {
             $em = $this->getDoctrine()->getManager();
             $em->remove($customer);

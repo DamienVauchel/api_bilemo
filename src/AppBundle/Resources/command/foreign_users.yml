@@ -1,0 +1,9 @@
+customer_01:
+    username: "SFR"
+    email: "sfr@sfr.fr"
+    gender: "male"
+    first_name: "SFR"
+    last_name: "France"
+    facebookId: "12345678910"
+    accessToken: "rgqer5g1q65r16qe5r16q5er1qberbq1er65b1qe65r1bq6erbqerq16"
+
