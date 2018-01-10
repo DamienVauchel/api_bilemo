@@ -80,6 +80,16 @@ class Customer
     /**
      * @var string
      *
+     * @ORM\Column(name="password", type="string", nullable=true)
+     * @Assert\NotBlank()
+     *
+     * @Expose()
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="first_name", type="string", nullable=true)
      * @Assert\NotBlank()
      *
@@ -99,6 +109,7 @@ class Customer
 
     /**
      * @ORM\ManyToOne(targetEntity="FacebookConnectionBundle\Entity\User", inversedBy="customers")
+     *
      */
     private $user;
 
@@ -206,5 +217,29 @@ class Customer
     public function getLastName()
     {
         return $this->last_name;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \FacebookConnectionBundle\Entity\User|null $user
+     *
+     * @return Customer
+     */
+    public function setUser(\FacebookConnectionBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \FacebookConnectionBundle\Entity\User|null
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }

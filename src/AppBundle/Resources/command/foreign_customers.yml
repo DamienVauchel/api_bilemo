@@ -1,0 +1,28 @@
+customer_01:
+    username: "jdg"
+    email: "grand_jd@youtube.com"
+    password: "1234"
+    first_name: "Julien"
+    last_name: "D"
+
+customer_02:
+    username: "Superman"
+    email: "p_croce@youtube.com"
+    password: "1234"
+    first_name: "Pierre"
+    last_name: "Croce"
+
+customer_03:
+    username: "Dindon masqué"
+    email: "super_mario@nintendo.com"
+    password: "1234"
+    first_name: "Super"
+    last_name: "Mario"
+
+customer_04:
+    username: "Bigorneau"
+    email: "batou@gotham.com"
+    password: "1234"
+    first_name: "Bruce"
+    last_name: "Wayne"
+

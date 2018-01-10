@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
@@ -45,6 +46,11 @@ use JMS\Serializer\Annotation\Expose;
  *          parameters={ "id" = "expr(object.getId())" },
  *          absolute=true)
  * )
+ *
+ * @Hateoas\Relation(
+ *     "authenticated_user",
+ *     embedded = @Hateoas\Embedded("expr(service('security.token_storage').getToken().getUser())")
+ * )
  */
 class Customer
 {
@@ -54,6 +60,8 @@ class Customer
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Expose()
      */
     private $id;
 
@@ -80,6 +88,16 @@ class Customer
     /**
      * @var string
      *
+     * @ORM\Column(name="password", type="string", nullable=true)
+     * @Assert\NotBlank()
+     *
+     * @Expose()
+     */
+    private $password;
+
+    /**
+     * @var string
+     *
      * @ORM\Column(name="first_name", type="string", nullable=true)
      * @Assert\NotBlank()
      *
@@ -100,6 +118,7 @@ class Customer
     /**
      * @ORM\ManyToOne(targetEntity="FacebookConnectionBundle\Entity\User", inversedBy="customers")
      *
+     * @Expose()
      */
     private $user;
 
@@ -231,5 +250,29 @@ class Customer
     public function getUser()
     {
         return $this->user;
+    }
+
+    /**
+     * Set password.
+     *
+     * @param string|null $password
+     *
+     * @return Customer
+     */
+    public function setPassword($password = null)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password.
+     *
+     * @return string|null
+     */
+    public function getPassword()
+    {
+        return $this->password;
     }
 }
