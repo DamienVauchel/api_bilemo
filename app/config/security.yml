@@ -10,6 +10,10 @@ security:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
 
+        api_doc:
+            pattern: ^/api/doc
+            security: false
+
         secured_area:
             pattern: ^/login
             stateless: false
@@ -27,6 +31,10 @@ security:
             simple_preauth:
                 authenticator: facebook_authenticator
             provider: provider.facebook_user
+
+        api_doc:
+            pattern: ^/api/doc
+            security: false
 
         main:
             anonymous: ~

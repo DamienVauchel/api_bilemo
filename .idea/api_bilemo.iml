@@ -5,8 +5,25 @@
       <sourceFolder url="file://$MODULE_DIR$/src/FacebookConnectionBundle" isTestSource="false" packagePrefix="FacebookConnectionBundle\" />
       <sourceFolder url="file://$MODULE_DIR$/tests" isTestSource="true" packagePrefix="Tests\" />
       <sourceFolder url="file://$MODULE_DIR$/src/AppBundle" isTestSource="false" packagePrefix="AppBundle\" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/exsyst/swagger" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/nelmio/api-doc-bundle" />
+      <excludeFolder url="file://$MODULE_DIR$/vendor/zircote/swagger-php" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library">
+      <library name="PHP" type="php">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/vendor/exsyst/swagger" />
+          <root url="file://$MODULE_DIR$/vendor/nelmio/api-doc-bundle" />
+          <root url="file://$MODULE_DIR$/vendor/zircote/swagger-php" />
+        </CLASSES>
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/vendor/exsyst/swagger" />
+          <root url="file://$MODULE_DIR$/vendor/nelmio/api-doc-bundle" />
+          <root url="file://$MODULE_DIR$/vendor/zircote/swagger-php" />
+        </SOURCES>
+      </library>
+    </orderEntry>
   </component>
 </module>

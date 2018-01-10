@@ -6,8 +6,10 @@ use AppBundle\Entity\Phone;
 use FOS\RestBundle\Controller\FOSRestController;
 use FOS\RestBundle\Controller\Annotations\Get;
 use FOS\RestBundle\Controller\Annotations\View;
+use Nelmio\ApiDocBundle\Annotation\Model;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Component\HttpFoundation\Response;
+use Swagger\Annotations as SWG;
 
 class PhoneController extends FOSRestController
 {
@@ -23,6 +25,25 @@ class PhoneController extends FOSRestController
      *
      * @param Phone $phone
      * @return Phone
+     *
+     * @SWG\Parameter(
+     *     name="id",
+     *     in="query",
+     *     type="integer",
+     *     description="Unique id to identify the phone.",
+     *     required=true
+     * )
+     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Phone's detail. Success",
+     *     @Model(type=Phone::class)
+     * )
+     * @SWG\Response(
+     *     response=403,
+     *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
+     * )
+     * @SWG\Tag(name="Phones")
      */
     public function showAction(Phone $phone)
     {
@@ -37,6 +58,17 @@ class PhoneController extends FOSRestController
      * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
+     *
+     * @SWG\Response(
+     *     response=200,
+     *     description="Phones list. Success",
+     *     @Model(type=Phone::class)
+     * )
+     * @SWG\Response(
+     *     response=403,
+     *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
+     * )
+     * @SWG\Tag(name="Phones")
      */
     public function listAction()
     {
