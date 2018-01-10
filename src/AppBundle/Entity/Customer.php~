@@ -1,0 +1,136 @@
+<?php
+
+namespace AppBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
+use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation\ExclusionPolicy;
+use JMS\Serializer\Annotation\Expose;
+
+/**
+ * Client
+ *
+ * @ORM\Table(name="customers")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\CustomerRepository")
+ *
+ * @ExclusionPolicy("all")
+ *
+ * @Hateoas\Relation(
+ *     "self",
+ *     href= @Hateoas\Route(
+ *          "app_customer_show",
+ *          parameters={ "id" = "expr(object.getId())" },
+ *          absolute=true)
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "create",
+ *     href= @Hateoas\Route(
+ *          "app_customer_creation",
+ *          absolute=true)
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "list",
+ *     href= @Hateoas\Route(
+ *          "app_customer_list",
+ *          absolute=true)
+ * )
+ *
+ * @Hateoas\Relation(
+ *     "delete",
+ *     href= @Hateoas\Route(
+ *          "app_customer_delete",
+ *          parameters={ "id" = "expr(object.getId())" },
+ *          absolute=true)
+ * )
+ */
+class Customer
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", nullable=true, unique=true)
+     * @Assert\NotBlank()
+     *
+     * @Expose()
+     */
+    private $username;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", nullable=true)
+     * @Assert\NotBlank()
+     *
+     * @Expose()
+     */
+    private $email;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="first_name", type="string", nullable=true)
+     * @Assert\NotBlank()
+     *
+     * @Expose()
+     */
+    private $first_name;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="last_name", type="string", nullable=true)
+     * @Assert\NotBlank()
+     *
+     * @Expose()
+     */
+    private $last_name;
+
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     *
+     * @return Customer
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+}
+

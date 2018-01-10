@@ -7,7 +7,6 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use Symfony\Component\Validator\Constraints as Assert;
-use Hateoas\Configuration\Annotation as Hateoas;
 
 /**
  * Phone
@@ -16,36 +15,6 @@ use Hateoas\Configuration\Annotation as Hateoas;
  * @ORM\Entity(repositoryClass="FacebookConnectionBundle\Repository\UserRepository")
  *
  * @ExclusionPolicy("all")
- *
- * @Hateoas\Relation(
- *     "self",
- *     href= @Hateoas\Route(
- *          "app_user_show",
- *          parameters={ "username" = "expr(object.getUsername())" },
- *          absolute=true)
- * )
- *
- * @Hateoas\Relation(
- *     "create",
- *     href= @Hateoas\Route(
- *          "app_user_creation",
- *          absolute=true)
- * )
- *
- * @Hateoas\Relation(
- *     "list",
- *     href= @Hateoas\Route(
- *          "app_users_list",
- *          absolute=true)
- * )
- *
- * @Hateoas\Relation(
- *     "delete",
- *     href= @Hateoas\Route(
- *          "app_user_delete",
- *          parameters={ "username" = "expr(object.getUsername())" },
- *          absolute=true)
- * )
  */
 class User implements UserInterface
 {
