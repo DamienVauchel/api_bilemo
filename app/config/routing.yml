@@ -1,11 +1,11 @@
+app:
+    resource: '@AppBundle/Controller/'
+    type: annotation
+
 facebook_connection:
     resource: "@FacebookConnectionBundle/Controller/"
     type:     annotation
     prefix:   /
-
-app:
-    resource: '@AppBundle/Controller/'
-    type: annotation
 
 app.swagger_ui:
     path: /api/doc

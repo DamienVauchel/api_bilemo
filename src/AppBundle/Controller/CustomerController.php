@@ -1,8 +1,9 @@
 <?php
 
-namespace FacebookConnectionBundle\Controller;
+namespace AppBundle\Controller;
 
-use FacebookConnectionBundle\Entity\User;
+use AppBundle\Entity\Customer;
+use AppBundle\Exception\NotTheGoodUserException;
 use FacebookConnectionBundle\Exception\ResourceValidationException;
 use FacebookConnectionBundle\Exception\UserExistException;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -17,21 +18,21 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Symfony\Component\Validator\ConstraintViolationList;
 use Swagger\Annotations as SWG;
 
-class UserController extends FOSRestController
+class CustomerController extends FOSRestController
 {
     // CREATE
     /**
      * @Post(
-     *     path="/api/users",
-     *     name="app_user_creation"
+     *     path="/api/customers",
+     *     name="app_customer_creation"
      * )
-     * @ParamConverter("user", converter="fos_rest.request_body")
+     * @ParamConverter("customer", converter="fos_rest.request_body")
      *
      * @View(StatusCode=201)
      *
      * @Security("has_role('ROLE_USER')")
      *
-     * @param User $user
+     * @param Customer $customer
      * @param ConstraintViolationList $violations
      * @return mixed
      * @throws
@@ -46,56 +47,42 @@ class UserController extends FOSRestController
      *     name="username",
      *     in="header",
      *     type="string",
-     *     description="User's username or fullname. Have to be unique",
+     *     description="customer's username or fullname. Have to be unique",
      *     required=true
      * )
      * @SWG\Parameter(
      *     name="email",
      *     in="header",
      *     type="string",
-     *     description="User's email.",
+     *     description="customer's email.",
      *     required=true
      * )
      * @SWG\Parameter(
      *     name="gender",
      *     in="header",
      *     type="string",
-     *     description="User's gender. ''male'' or ''female''",
+     *     description="customer's gender. ''male'' or ''female''",
      *     required=true
      * )
      * @SWG\Parameter(
      *     name="first_name",
      *     in="header",
      *     type="string",
-     *     description="User's first name.",
+     *     description="customer's first name.",
      *     required=true
      * )
      * @SWG\Parameter(
      *     name="last_name",
      *     in="header",
      *     type="string",
-     *     description="User's last name.",
-     *     required=true
-     * )
-     * @SWG\Parameter(
-     *     name="roles",
-     *     in="header",
-     *     type="string",
-     *     description="User's role. Have to type '' ''roles'': ''[\\''ROLE_USER\\'']'' ''",
-     *     required=true
-     * )
-     * @SWG\Parameter(
-     *     name="facebookId",
-     *     in="header",
-     *     type="string",
-     *     description="User's facebook id. Provided by facebook. Unique",
+     *     description="customer's last name.",
      *     required=true
      * )
      *
      * @SWG\Response(
      *     response=201,
-     *     description="Manually create a new user with the facebookId. Success",
-     *     @Model(type=User::class)
+     *     description="Manually create a new customer. Success",
+     *     @Model(type=Customer::class)
      * )
      * @SWG\Response(
      *     response=400,
@@ -105,9 +92,9 @@ class UserController extends FOSRestController
      *     response=403,
      *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
      * )
-     * @SWG\Tag(name="Users")
+     * @SWG\Tag(name="Customers")
      */
-    public function createAction(User $user, ConstraintViolationList $violations)
+    public function createAction(Customer $customer, ConstraintViolationList $violations)
     {
         if (count($violations))
         {
@@ -123,18 +110,21 @@ class UserController extends FOSRestController
             throw new ResourceValidationException($message);
         }
 
+        $user = $this->findUser();
+        $customer->setUser($user);
+
         $em = $this->getDoctrine()->getManager();
-        $em->persist($user);
+        $em->persist($customer);
         $em->flush();
 
-        return $this->redirectToRoute('app_users_list');
+        return $this->redirectToRoute('app_customer_list');
     }
 
     // READ
     /**
      * @Get(
-     *     path="/api/users",
-     *     name="app_users_list"
+     *     path="/api/customers",
+     *     name="app_customer_list"
      * )
      *
      * @View(StatusCode=200)
@@ -143,23 +133,27 @@ class UserController extends FOSRestController
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Users list. Success",
-     *     @Model(type=User::class)
+     *     description="customer list. Success",
+     *     @Model(type=Customer::class)
      * )
      * @SWG\Response(
      *     response=403,
      *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
      * )
-     * @SWG\Tag(name="Users")
+     * @SWG\Tag(name="Customers")
      */
     public function listAction()
     {
-        $users = $this->getDoctrine()
-            ->getRepository('FacebookConnectionBundle:User')
-            ->findAll();
+        $user = $this->findUser();
+        $user_id = $user->getId();
+
+        $customers = $this->getDoctrine()
+            ->getRepository('AppBundle:Customer')
+            ->getCustomersUser($user_id);
+
         $data = $this->get('jms_serializer')
             ->serialize(
-                $users,
+                $customers,
                 'json'
             );
 
@@ -172,78 +166,113 @@ class UserController extends FOSRestController
 
     /**
      * @Get(
-     *     path="/api/users/{username}",
-     *     name="app_user_show"
+     *     path="/api/customers/{id}",
+     *     name="app_customer_show",
+     *     requirements={"id"="\d+"}
      * )
      * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
      *
-     * @param User $user
-     * @return User
+     * @param Customer $customer
+     * @return Customer
      * @throws
      *
      * @SWG\Parameter(
-     *     name="username",
+     *     name="id",
      *     in="query",
-     *     type="string",
-     *     description="Unique username to identify the user.",
+     *     type="integer",
+     *     description="Unique id to identify the customer.",
      *     required=true
      * )
      *
      * @SWG\Response(
      *     response=200,
-     *     description="User's detail. Success",
-     *     @Model(type=User::class)
+     *     description="customer's detail. Success",
+     *     @Model(type=Customer::class)
      * )
      * @SWG\Response(
      *     response=403,
      *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
      * )
-     * @SWG\Tag(name="Users")
+     * @SWG\Tag(name="Customers")
      */
-    public function showAction(User $user)
+    public function showAction(Customer $customer)
     {
-        return $user;
+        $user = $this->findUser();
+        if ($user = $customer->getUser())
+        {
+            return $customer;
+        }
+        else
+        {
+            $message = "This client isn't from your database, log in with the good account.";
+            throw new NotTheGoodUserException($message);
+        }
     }
 
     /**
      * @Delete(
-     *     path="/api/delete/{username}",
-     *     name="app_user_delete"
+     *     path="/api/customers/{id}",
+     *     name="app_customer_delete",
+     *     requirements={ "id"="\d+" }
      * )
      * @View(StatusCode=200)
      *
      * @Security("has_role('ROLE_USER')")
      *
-     * @param User $user
+     * @param Customer $customer
      * @return mixed
+     * @throws
      *
      * @SWG\Parameter(
-     *     name="username",
+     *     name="id",
      *     in="query",
-     *     type="string",
-     *     description="Unique username to identify the user.",
+     *     type="integer",
+     *     description="Unique id to identify the user.",
      *     required=true
      * )
      *
      * @SWG\Response(
      *     response=200,
-     *     description="Delete an user. Success.",
-     *     @Model(type=User::class)
+     *     description="Delete a customer. Success.",
+     *     @Model(type=Customer::class)
      * )
      * @SWG\Response(
      *     response=403,
      *     description="You don't have the permission to access this URL. Login or signup, you need a valid access token."
      * )
-     * @SWG\Tag(name="Users")
+     * @SWG\Tag(name="Customers")
      */
-    public function deleteAction(User $user)
+    public function deleteAction(Customer $customer)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($user);
-        $em->flush();
+        $user = $this->findUser();
+        if ($user = $customer->getUser())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($customer);
+            $em->flush();
 
-        return $this->redirectToRoute('app_users_list');
+            return $this->redirectToRoute('app_customer_list');
+        }
+        else
+        {
+            $message = "This client isn't from your database, log in with the good account.";
+            throw new NotTheGoodUserException($message);
+        }
+    }
+
+    // METHODS
+    public function findUser()
+    {
+        $user_username = $this->get('security.token_storage')
+            ->getToken()
+            ->getUser()
+            ->getUsername();
+        $user = $this->getDoctrine()
+            ->getRepository('FacebookConnectionBundle:User')
+            ->findByUsername($user_username);
+
+        return $user;
     }
 }

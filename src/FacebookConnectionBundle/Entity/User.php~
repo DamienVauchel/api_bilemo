@@ -311,40 +311,4 @@ class User implements UserInterface
     {
         return $this->facebookId;
     }
-
-    /**
-     * Add customer.
-     *
-     * @param \AppBundle\Entity\Customer $customer
-     *
-     * @return User
-     */
-    public function addCustomer(\AppBundle\Entity\Customer $customer)
-    {
-        $this->customers[] = $customer;
-
-        return $this;
-    }
-
-    /**
-     * Remove customer.
-     *
-     * @param \AppBundle\Entity\Customer $customer
-     *
-     * @return boolean TRUE if this collection contained the specified element, FALSE otherwise.
-     */
-    public function removeCustomer(\AppBundle\Entity\Customer $customer)
-    {
-        return $this->customers->removeElement($customer);
-    }
-
-    /**
-     * Get customers.
-     *
-     * @return \Doctrine\Common\Collections\Collection
-     */
-    public function getCustomers()
-    {
-        return $this->customers;
-    }
 }
