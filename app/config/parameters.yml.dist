@@ -17,3 +17,7 @@ parameters:
 
     # A secret key that's used to generate certain security-related tokens
     secret: ThisTokenIsNotSoSecretChangeIt
+
+    client_id: your_facebook_app_client_id
+    client_secret: your_facebook_app_client_secret
+    redirect_uri: your_facebook_app_redirection_uri
