@@ -3,7 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Customer;
-use FacebookConnectionBundle\Entity\User;
+use AppBundle\Exception\NotTheGoodUserException;
 use FacebookConnectionBundle\Exception\ResourceValidationException;
 use FacebookConnectionBundle\Exception\UserExistException;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -110,6 +110,9 @@ class CustomerController extends FOSRestController
             throw new ResourceValidationException($message);
         }
 
+        $user = $this->findUser();
+        $customer->setUser($user);
+
         $em = $this->getDoctrine()->getManager();
         $em->persist($customer);
         $em->flush();
@@ -141,9 +144,13 @@ class CustomerController extends FOSRestController
      */
     public function listAction()
     {
+        $user = $this->findUser();
+        $user_id = $user->getId();
+
         $customers = $this->getDoctrine()
             ->getRepository('AppBundle:Customer')
-            ->findAll();
+            ->getCustomersUser($user_id);
+
         $data = $this->get('jms_serializer')
             ->serialize(
                 $customers,
@@ -161,7 +168,7 @@ class CustomerController extends FOSRestController
      * @Get(
      *     path="/api/customers/{id}",
      *     name="app_customer_show",
-     *     requirements={ "id"="/d+" }
+     *     requirements={"id"="\d+"}
      * )
      * @View(StatusCode=200)
      *
@@ -192,14 +199,23 @@ class CustomerController extends FOSRestController
      */
     public function showAction(Customer $customer)
     {
-        return $customer;
+        $user = $this->findUser();
+        if ($user = $customer->getUser())
+        {
+            return $customer;
+        }
+        else
+        {
+            $message = "This client isn't from your database, log in with the good account.";
+            throw new NotTheGoodUserException($message);
+        }
     }
 
     /**
      * @Delete(
      *     path="/api/customers/{id}",
      *     name="app_customer_delete",
-     *     requirements={ "id"="/d+" }
+     *     requirements={ "id"="\d+" }
      * )
      * @View(StatusCode=200)
      *
@@ -207,6 +223,7 @@ class CustomerController extends FOSRestController
      *
      * @param Customer $customer
      * @return mixed
+     * @throws
      *
      * @SWG\Parameter(
      *     name="id",
@@ -229,10 +246,33 @@ class CustomerController extends FOSRestController
      */
     public function deleteAction(Customer $customer)
     {
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($customer);
-        $em->flush();
+        $user = $this->findUser();
+        if ($user = $customer->getUser())
+        {
+            $em = $this->getDoctrine()->getManager();
+            $em->remove($customer);
+            $em->flush();
 
-        return $this->redirectToRoute('app_customer_list');
+            return $this->redirectToRoute('app_customer_list');
+        }
+        else
+        {
+            $message = "This client isn't from your database, log in with the good account.";
+            throw new NotTheGoodUserException($message);
+        }
+    }
+
+    // METHODS
+    public function findUser()
+    {
+        $user_username = $this->get('security.token_storage')
+            ->getToken()
+            ->getUser()
+            ->getUsername();
+        $user = $this->getDoctrine()
+            ->getRepository('FacebookConnectionBundle:User')
+            ->findByUsername($user_username);
+
+        return $user;
     }
 }

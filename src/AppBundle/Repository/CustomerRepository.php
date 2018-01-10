@@ -10,4 +10,13 @@ namespace AppBundle\Repository;
  */
 class CustomerRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function getCustomersUser($id)
+    {
+        $query = $this->createQueryBuilder('c')
+            ->where('c.user = :id')
+            ->setParameter('id', $id)
+            ->getQuery();
+
+        return $query->getArrayResult();
+    }
 }

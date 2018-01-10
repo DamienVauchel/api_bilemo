@@ -10,4 +10,13 @@ namespace FacebookConnectionBundle\Repository;
  */
 class UserRepository extends \Doctrine\ORM\EntityRepository
 {
+    public function findByUsername($username)
+    {
+        $query = $this->createQueryBuilder('u')
+            ->where('u.username = :username')
+            ->setParameter('username', $username)
+            ->getQuery();
+
+        return $query->getOneOrNullResult();
+    }
 }

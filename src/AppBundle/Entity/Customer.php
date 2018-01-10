@@ -97,6 +97,11 @@ class Customer
      */
     private $last_name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="FacebookConnectionBundle\Entity\User", inversedBy="customers")
+     *
+     */
+    private $user;
 
     /**
      * Get id
@@ -202,5 +207,29 @@ class Customer
     public function getLastName()
     {
         return $this->last_name;
+    }
+
+    /**
+     * Set user.
+     *
+     * @param \FacebookConnectionBundle\Entity\User|null $user
+     *
+     * @return Customer
+     */
+    public function setUser(\FacebookConnectionBundle\Entity\User $user = null)
+    {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user.
+     *
+     * @return \FacebookConnectionBundle\Entity\User|null
+     */
+    public function getUser()
+    {
+        return $this->user;
     }
 }
