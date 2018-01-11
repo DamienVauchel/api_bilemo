@@ -39,7 +39,6 @@ class FacebookUserProvider implements UserProviderInterface
         $user = new User(
             $userData['id'],
             $userData['name'],
-            $userData['email'],
             $userData['gender'],
             $userData['first_name'],
             $userData['last_name'],

@@ -4,7 +4,6 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
-use JMS\Serializer\Annotation as Serializer;
 use Symfony\Component\Validator\Constraints as Assert;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
@@ -68,7 +67,7 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", nullable=true, unique=true)
+     * @ORM\Column(name="username", type="string", unique=true, nullable=false)
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -78,7 +77,7 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="email", type="string", nullable=true)
+     * @ORM\Column(name="email", type="string", nullable=false)
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -88,7 +87,7 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="password", type="string", nullable=true)
+     * @ORM\Column(name="password", type="string", nullable=false)
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -98,7 +97,7 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="first_name", type="string", nullable=true)
+     * @ORM\Column(name="first_name", type="string")
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -108,7 +107,7 @@ class Customer
     /**
      * @var string
      *
-     * @ORM\Column(name="last_name", type="string", nullable=true)
+     * @ORM\Column(name="last_name", type="string")
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -135,11 +134,11 @@ class Customer
     /**
      * Set username.
      *
-     * @param string|null $username
+     * @param string $username
      *
      * @return Customer
      */
-    public function setUsername($username = null)
+    public function setUsername($username)
     {
         $this->username = $username;
 
@@ -149,7 +148,7 @@ class Customer
     /**
      * Get username.
      *
-     * @return string|null
+     * @return string
      */
     public function getUsername()
     {
@@ -159,11 +158,11 @@ class Customer
     /**
      * Set email.
      *
-     * @param string|null $email
+     * @param string $email
      *
      * @return Customer
      */
-    public function setEmail($email = null)
+    public function setEmail($email)
     {
         $this->email = $email;
 
@@ -173,7 +172,7 @@ class Customer
     /**
      * Get email.
      *
-     * @return string|null
+     * @return string
      */
     public function getEmail()
     {
@@ -181,13 +180,37 @@ class Customer
     }
 
     /**
-     * Set firstName.
+     * Set password.
      *
-     * @param string|null $firstName
+     * @param string $password
      *
      * @return Customer
      */
-    public function setFirstName($firstName = null)
+    public function setPassword($password)
+    {
+        $this->password = $password;
+
+        return $this;
+    }
+
+    /**
+     * Get password.
+     *
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * Set firstName.
+     *
+     * @param string $firstName
+     *
+     * @return Customer
+     */
+    public function setFirstName($firstName)
     {
         $this->first_name = $firstName;
 
@@ -197,7 +220,7 @@ class Customer
     /**
      * Get firstName.
      *
-     * @return string|null
+     * @return string
      */
     public function getFirstName()
     {
@@ -207,11 +230,11 @@ class Customer
     /**
      * Set lastName.
      *
-     * @param string|null $lastName
+     * @param string $lastName
      *
      * @return Customer
      */
-    public function setLastName($lastName = null)
+    public function setLastName($lastName)
     {
         $this->last_name = $lastName;
 
@@ -221,7 +244,7 @@ class Customer
     /**
      * Get lastName.
      *
-     * @return string|null
+     * @return string
      */
     public function getLastName()
     {
@@ -250,29 +273,5 @@ class Customer
     public function getUser()
     {
         return $this->user;
-    }
-
-    /**
-     * Set password.
-     *
-     * @param string|null $password
-     *
-     * @return Customer
-     */
-    public function setPassword($password = null)
-    {
-        $this->password = $password;
-
-        return $this;
-    }
-
-    /**
-     * Get password.
-     *
-     * @return string|null
-     */
-    public function getPassword()
-    {
-        return $this->password;
     }
 }

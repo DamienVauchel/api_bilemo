@@ -216,28 +216,5 @@ class Phone
     {
         return $this->color;
     }
-
-    /**
-     * Set stock.
-     *
-     * @param int|null $stock
-     *
-     * @return Phone
-     */
-    public function setStock($stock = null)
-    {
-        $this->stock = $stock;
-
-        return $this;
-    }
-
-    /**
-     * Get stock.
-     *
-     * @return int|null
-     */
-    public function getStock()
-    {
-        return $this->stock;
-    }
 }
+

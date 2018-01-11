@@ -87,25 +87,4 @@ class PhoneController extends FOSRestController
 
         return $response;
     }
-
-//    /**
-//     * @Post(
-//     *     path="/api/phones",
-//     *     name="app_phone_creation"
-//     * )
-//     * @View(StatusCode=201)
-//     *
-//     * @ParamConverter("phone", converter="fos_rest.request_body")
-//     *
-//     * @param Phone $phone
-//     * @return Phone
-//     */
-//    public function createAction(Phone $phone)
-//    {
-//        $em = $this->getDoctrine()->getManager();
-//        $em->persist($phone);
-//        $em->flush();
-//
-//        return $phone;
-//    }
 }
