@@ -30,22 +30,12 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="username", type="string", nullable=true, unique=true)
+     * @ORM\Column(name="username", type="string", nullable=false, unique=true)
      * @Assert\NotBlank()
      *
      * @Expose()
      */
     private $username;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", nullable=true)
-     * @Assert\NotBlank()
-     *
-     * @Expose()
-     */
-    private $email;
 
     /**
      * @var string
@@ -80,7 +70,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="roles", type="string")
+     * @ORM\Column(name="roles", type="string", nullable=false)
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -90,7 +80,7 @@ class User implements UserInterface
     /**
      * @var string
      *
-     * @ORM\Column(name="facebookId", type="string", nullable=true)
+     * @ORM\Column(name="facebookId", type="string", nullable=false)
      * @Assert\NotBlank()
      *
      * @Expose()
@@ -104,11 +94,10 @@ class User implements UserInterface
      */
     private $customers;
 
-    public function __construct($facebookId, $username, $email, $gender, $first_name, $last_name, $accessToken)
+    public function __construct($facebookId, $username, $gender, $first_name, $last_name, $accessToken)
     {
         $this->facebookId = $facebookId;
         $this->username = $username;
-        $this->email = $email;
         $this->gender = $gender;
         $this->first_name = $first_name;
         $this->last_name = $last_name;
@@ -124,11 +113,6 @@ class User implements UserInterface
     public function getAccessToken()
     {
         return $this->accessToken;
-    }
-
-    public function getEmail()
-    {
-        return $this->email;
     }
 
     public function getRoles()
@@ -182,20 +166,6 @@ class User implements UserInterface
     public function setUsername($username)
     {
         $this->username = $username;
-
-        return $this;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return User
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
 
         return $this;
     }

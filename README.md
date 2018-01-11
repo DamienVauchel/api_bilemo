@@ -55,25 +55,31 @@ Download project or clone it in the htdocs or www depend of your OS
     
         php bin/console doctrine:schema:update --force
         
-3. **First user creation** Go on the URL:
+3. **Facebook app connection** 
+To be able to connect yourself with Facebook Login App, go on your developer.facebook account and register the api with URL, example: http://localhost/api_bilemo/web
+    * Copy your client_id and paste it in parameters.yml
+    * Copy your client_secret and paste it in parameters.yml
+    * Put your redirect_uri in parameters.yml. It has to have your path (ex: http://localhost/api_bilemo/web) and add /login/connection. Example: http://localhost/api_bilemo/web/login/connection
+
+4. **First user creation** Go on the URL:
 [http://localhost/api_bilemo/web](http://localhost/api_bilemo/web) (if you put the folder on your apache root)
 Then Click on the "Connexion via Facebook" button.
 Accept the Facebook permissions.
 Your user is created.
         
-4. **Copy the access token** which is provided by the Facebook connection page to paste it on step 6.
+5. **Copy the access token** which is provided by the Facebook connection page to paste it on step 7.
 
-5. **Example Datas in database** Type:
+6. **Example Datas in database** Type:
 
         php bin/console bilemo:fixtures
 
-6. **Now, you can use the API on Postman**
+7. **Now, you can use the API on Postman**
 To access the API pages, add to the HTTP header the parameters:
 
         Content-Type: application/json
         Authorization: Bearer your_access_token
 
-7. **For other informations, see the local documentation** by going on the URL:
+8. **For other informations, see the local documentation** by going on the URL:
 [http://localhost/api_bilemo/web/api/doc](http://localhost/snow_tricks/web/api/doc) (if you put the folder on your apache root)
 
 And enjoy :)
