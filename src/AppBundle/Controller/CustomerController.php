@@ -4,6 +4,8 @@ namespace AppBundle\Controller;
 
 use AppBundle\Entity\Customer;
 use AppBundle\Exception\NotTheGoodUserException;
+use AppBundle\Exception\UniqueUsernameException;
+use Doctrine\DBAL\DBALException;
 use FacebookConnectionBundle\Exception\ResourceValidationException;
 use FacebookConnectionBundle\Exception\UserExistException;
 use FOS\RestBundle\Controller\FOSRestController;
@@ -80,7 +82,7 @@ class CustomerController extends FOSRestController
      * )
      * @SWG\Response(
      *     response=400,
-     *     description="Invalid data sent or missing field(s)"
+     *     description="Invalid data sent, missing field(s) or username already exists in the database"
      * )
      * @SWG\Response(
      *     response=403,
@@ -109,7 +111,15 @@ class CustomerController extends FOSRestController
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($customer);
-        $em->flush();
+        try
+        {
+            $em->flush();
+        }
+        catch (DBALException $exception)
+        {
+            $message = "Username is already taken, chose another one";
+            throw new UniqueUsernameException($message);
+        }
 
         return $this->redirectToRoute('app_customer_list');
     }
