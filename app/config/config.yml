@@ -81,7 +81,7 @@ fos_rest:
         enabled: true
         exception_controller: 'fos_rest.exception.controller:showAction'
         codes:
-            { AppBundle\Exception\BeLoggedException: 403, AppBundle\Exception\NotTheGoodUserException: 403, FacebookConnectionBundle\Exception\ResourceValidationException: 400 }
+            { AppBundle\Exception\BeLoggedException: 403, AppBundle\Exception\NotTheGoodUserException: 403, FacebookConnectionBundle\Exception\ResourceValidationException: 400, AppBundle\Exception\UniqueUsernameException: 400 }
 
 csa_guzzle:
     clients:
