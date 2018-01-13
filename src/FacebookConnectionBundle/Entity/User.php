@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
 use Symfony\Component\Validator\Constraints as Assert;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Phone
@@ -24,6 +25,8 @@ class User implements UserInterface
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id()
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Since("1.0")
      */
     private $id;
 
@@ -32,6 +35,8 @@ class User implements UserInterface
      *
      * @ORM\Column(name="username", type="string", nullable=false, unique=true)
      * @Assert\NotBlank()
+     *
+     * @Serializer\Since("1.0")
      *
      * @Expose()
      */
@@ -43,6 +48,8 @@ class User implements UserInterface
      * @ORM\Column(name="gender", type="string", nullable=true)
      * @Assert\NotBlank()
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $gender;
@@ -52,6 +59,8 @@ class User implements UserInterface
      *
      * @ORM\Column(name="first_name", type="string", nullable=true)
      * @Assert\NotBlank()
+     *
+     * @Serializer\Since("1.0")
      *
      * @Expose()
      */
@@ -63,6 +72,8 @@ class User implements UserInterface
      * @ORM\Column(name="last_name", type="string", nullable=true)
      * @Assert\NotBlank()
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $last_name;
@@ -73,6 +84,8 @@ class User implements UserInterface
      * @ORM\Column(name="roles", type="string", nullable=false)
      * @Assert\NotBlank()
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $roles;
@@ -82,6 +95,8 @@ class User implements UserInterface
      *
      * @ORM\Column(name="facebookId", type="string", nullable=false)
      * @Assert\NotBlank()
+     *
+     * @Serializer\Since("1.0")
      *
      * @Expose()
      */
