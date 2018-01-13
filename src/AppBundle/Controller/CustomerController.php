@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Customer;
 use AppBundle\Exception\NotTheGoodUserException;
 use AppBundle\Exception\UniqueUsernameException;
-use AppBundle\Services\FindUser;
 use Doctrine\DBAL\DBALException;
 use FacebookConnectionBundle\Exception\ResourceValidationException;
 use FacebookConnectionBundle\Exception\UserExistException;
