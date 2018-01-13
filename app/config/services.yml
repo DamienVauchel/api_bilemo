@@ -33,3 +33,9 @@ services:
         arguments: ["@csa_guzzle.client.facebook_api", "@jms_serializer", "@user_manager"]
 
     GuzzleHttp\Client: '@csa_guzzle.client.facebook_api'
+
+    user_finder:
+        class: AppBundle\Services\FindUser
+        arguments:
+            - "@security.token_storage"
+            - "@doctrine.orm.entity_manager"
