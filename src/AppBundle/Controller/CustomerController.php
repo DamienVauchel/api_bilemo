@@ -117,8 +117,7 @@ class CustomerController extends FOSRestController
         }
         catch (DBALException $exception)
         {
-            $message = "Username is already taken, chose another one";
-            throw new UniqueUsernameException($message);
+            throw new UniqueUsernameException(sprintf("Username is already taken, chose another one"));
         }
 
         return $this->redirectToRoute('app_customer_list');
@@ -210,8 +209,7 @@ class CustomerController extends FOSRestController
         }
         else
         {
-            $message = "This client isn't from your database, log in with the good account.";
-            throw new NotTheGoodUserException($message);
+            throw new NotTheGoodUserException(sprintf("This client isn't from your database, log in with the good account."));
         }
     }
 
@@ -261,8 +259,7 @@ class CustomerController extends FOSRestController
         }
         else
         {
-            $message = "This client isn't from your database, log in with the good account.";
-            throw new NotTheGoodUserException($message);
+            throw new NotTheGoodUserException(sprintf("This client isn't from your database, log in with the good account."));
         }
     }
 
