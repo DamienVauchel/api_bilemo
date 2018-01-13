@@ -3,8 +3,6 @@ imports:
     - { resource: security.yml }
     - { resource: services.yml }
 
-# Put parameters here that don't need to change on each machine where the app is deployed
-# https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
     locale: fr
 
@@ -67,6 +65,8 @@ fos_rest:
     view:
         formats: { json: true, xml: false, rss: false }
         view_response_listener: true
+        mime_types:
+            json: [ 'application/json', 'application/json;version=1.0', 'application/json;version=2.0' ]
     serializer:
         serialize_null: true
     body_converter:
@@ -82,6 +82,12 @@ fos_rest:
         exception_controller: 'fos_rest.exception.controller:showAction'
         codes:
             { AppBundle\Exception\BeLoggedException: 403, AppBundle\Exception\NotTheGoodUserException: 403, FacebookConnectionBundle\Exception\ResourceValidationException: 400, AppBundle\Exception\UniqueUsernameException: 400 }
+    versioning:
+        enabled: true
+        resolvers:
+            media_type: # Accept header
+                enabled: true
+                regex: '/(v|version)=(?P<version>[0-9\.]+)/'
 
 csa_guzzle:
     clients:

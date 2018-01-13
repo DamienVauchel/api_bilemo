@@ -7,6 +7,7 @@ use Hateoas\Configuration\Annotation as Hateoas;
 use Symfony\Component\Validator\Constraints as Assert;
 use JMS\Serializer\Annotation\ExclusionPolicy;
 use JMS\Serializer\Annotation\Expose;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Client
@@ -60,6 +61,8 @@ class Customer
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $id;
@@ -69,6 +72,8 @@ class Customer
      *
      * @ORM\Column(name="username", type="string", unique=true, nullable=false)
      * @Assert\NotBlank()
+     *
+     * @Serializer\Since("1.0")
      *
      * @Expose()
      */
@@ -80,6 +85,8 @@ class Customer
      * @ORM\Column(name="email", type="string", nullable=false)
      * @Assert\NotBlank()
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $email;
@@ -89,6 +96,8 @@ class Customer
      *
      * @ORM\Column(name="password", type="string", nullable=false)
      * @Assert\NotBlank()
+     *
+     * @Serializer\Since("1.0")
      *
      * @Expose()
      */
@@ -100,6 +109,8 @@ class Customer
      * @ORM\Column(name="first_name", type="string")
      * @Assert\NotBlank()
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $first_name;
@@ -110,12 +121,16 @@ class Customer
      * @ORM\Column(name="last_name", type="string")
      * @Assert\NotBlank()
      *
+     * @Serializer\Since("1.0")
+     *
      * @Expose()
      */
     private $last_name;
 
     /**
      * @ORM\ManyToOne(targetEntity="FacebookConnectionBundle\Entity\User", inversedBy="customers")
+     *
+     * @Serializer\Since("1.0")
      *
      * @Expose()
      */

@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Hateoas\Configuration\Annotation as Hateoas;
+use JMS\Serializer\Annotation as Serializer;
 
 /**
  * Phone
@@ -41,6 +42,8 @@ class Phone
      * @ORM\Column(name="id", type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
+     *
+     * @Serializer\Since("1.0")
      */
     private $id;
 
@@ -48,6 +51,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="model", type="string", length=255)
+     *
+     * @Serializer\Since("1.0")
      */
     private $model;
 
@@ -55,6 +60,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="brand", type="string", length=255)
+     *
+     * @Serializer\Since("1.0")
      */
     private $brand;
 
@@ -62,6 +69,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="price", type="decimal", precision=6, scale=2)
+     *
+     * @Serializer\Since("1.0")
      */
     private $price;
 
@@ -69,6 +78,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="description", type="text")
+     *
+     * @Serializer\Since("1.0")
      */
     private $description;
 
@@ -76,6 +87,8 @@ class Phone
      * @var int
      *
      * @ORM\Column(name="stock", type="integer", nullable=true)
+     *
+     * @Serializer\Since("1.0")
      */
     private $stock;
 
@@ -83,6 +96,8 @@ class Phone
      * @var string
      *
      * @ORM\Column(name="color", type="string", length=255)
+     *
+     * @Serializer\Since("1.0")
      */
     private $color;
 

@@ -84,6 +84,9 @@ class PhoneController extends FOSRestController
         $response = new Response($data);
         $response->headers
             ->set('Content-Type', 'application/json');
+        $response->setSharedMaxAge(3600);
+        $response->headers
+            ->addCacheControlDirective('must-revalidate', true);
 
         return $response;
     }

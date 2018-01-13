@@ -106,7 +106,8 @@ class CustomerController extends FOSRestController
             throw new ResourceValidationException($message);
         }
 
-        $user = $this->findUser();
+        $user = $this->get('user_finder')
+            ->findUser();
         $customer->setUser($user);
 
         $em = $this->getDoctrine()->getManager();
@@ -117,8 +118,7 @@ class CustomerController extends FOSRestController
         }
         catch (DBALException $exception)
         {
-            $message = "Username is already taken, chose another one";
-            throw new UniqueUsernameException($message);
+            throw new UniqueUsernameException(sprintf("Username is already taken, chose another one"));
         }
 
         return $this->redirectToRoute('app_customer_list');
@@ -148,7 +148,8 @@ class CustomerController extends FOSRestController
      */
     public function listAction()
     {
-        $user = $this->findUser();
+        $user = $this->get('user_finder')
+            ->findUser();
         $user_id = $user->getId();
 
         $customers = $this->getDoctrine()
@@ -203,15 +204,15 @@ class CustomerController extends FOSRestController
      */
     public function showAction(Customer $customer)
     {
-        $user = $this->findUser();
+        $user = $this->get('user_finder')
+            ->findUser();
         if ($user === $customer->getUser())
         {
             return $customer;
         }
         else
         {
-            $message = "This client isn't from your database, log in with the good account.";
-            throw new NotTheGoodUserException($message);
+            throw new NotTheGoodUserException(sprintf("This client isn't from your database, log in with the good account."));
         }
     }
 
@@ -250,7 +251,8 @@ class CustomerController extends FOSRestController
      */
     public function deleteAction(Customer $customer)
     {
-        $user = $this->findUser();
+        $user = $this->get('user_finder')
+            ->findUser();
         if ($user === $customer->getUser())
         {
             $em = $this->getDoctrine()->getManager();
@@ -261,22 +263,7 @@ class CustomerController extends FOSRestController
         }
         else
         {
-            $message = "This client isn't from your database, log in with the good account.";
-            throw new NotTheGoodUserException($message);
+            throw new NotTheGoodUserException(sprintf("This client isn't from your database, log in with the good account."));
         }
-    }
-
-    // METHODS
-    public function findUser()
-    {
-        $user_username = $this->get('security.token_storage')
-            ->getToken()
-            ->getUser()
-            ->getUsername();
-        $user = $this->getDoctrine()
-            ->getRepository('FacebookConnectionBundle:User')
-            ->findByUsername($user_username);
-
-        return $user;
     }
 }

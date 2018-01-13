@@ -78,6 +78,7 @@ To access the API pages, add to the HTTP header the parameters:
 
         Content-Type: application/json
         Authorization: Bearer your_access_token
+        Accept: application/json;version=1.0                 (for 1.0 version)
 
 8. **For other informations, see the local documentation** by going on the URL:
 [http://localhost/api_bilemo/web/api/doc](http://localhost/snow_tricks/web/api/doc) (if you put the folder on your apache root)
