@@ -2,6 +2,8 @@
 
 Welcome on the Bilemo API GitHub. A **Symfony 3.4** project.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/23de752b925f4870911ba1e9502b96d5)](https://www.codacy.com/app/DamienVauchel/api_bilemo?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=DamienVauchel/api_bilemo&amp;utm_campaign=Badge_Grade)
+
 ## General context
 
 This project is linked to the OpenClassRooms DA PHP/Symfony's studies. It is the 7th project in which it is asked to create an API for a mobile phones seller. This is the first API REST project.
